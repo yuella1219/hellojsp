@@ -57,24 +57,62 @@
         .card-wrap #card .img-wrap{display : flex; align-items : center; background : #fff; border : 1px solid #6a85b5; border-radius : 24px; box-sizing : border-box; box-shadow : 6px 6px 6px rgba(0, 0, 0, 0.3); height : inherit;}
         .card-wrap #card .light{position : absolute; width : 100%; height : 100%; z-index : 1; border-radius : 24px;}
         /*  */
+        :root{--case-position : 0;}
         .showcase{overflow : hidden; display : flex; align-items : flex-start; justify-content : flex-start; flex-wrap : nowrap; max-width : 480px;}
-        .showcase-page{flex : 0 0 90%; border-radius : 12px; border : 2px solid #6a85b5; overflow : hidden; box-sizing : border-box; padding : 16px; margin-right : 10%;}
+        .showcase-page{flex : 0 0 90%; border-radius : 4px; border : 2px solid #bdbaba; overflow : hidden; box-sizing : border-box; padding : 16px; margin-right : 10%; transition : transform 0.3s; transform : translateX(var(--case-position))}
         .showcase-page .inner{display : grid; grid-template-columns : repeat(4, 1fr); gap : 14px;}
         .showcase-page .item{height : 99px; position : relative; transition : transform 0.1s; border : 1px solid #cecece; border-radius : 8px;}
-        .showcase-page .item:hover{transform : scale(1.1); }
+        .showcase-page .item:hover{transform : scale(1.1); border : 1px solid #7fa1ff;}
+        .showcase-page .item:active {transition : transform 0s; transform : scale(1);}
+        .showcase-page .item:active .img-wrap{border : 1px solid #7fa1ff; box-shadow : inset 3px 3px 3px rgba(0, 0, 0, 0.1);}
         .showcase-page .item:hover .label{font-size : 14px; color : #000;}
         .showcase-page .item button{display : block; height : inherit;}
         .showcase-page .item .img-wrap{width : 100%; height : inherit; overflow : hidden; object-fit : fill; display : inline-flex; align-items : center; justify-content : center; border-radius : 8px; position : relative; z-index : 1;}
         .showcase-page .item img{display : block; width : 120%;}
         .showcase-page .item::after {content : ""; position : absolute; display : block; width : 94%; border-radius : 20%; height : 4px; background : rgba(0, 0, 0, 0.4); filter : blur(4px); bottom : -1px; left : 3%;}
-        .showcase-page .item .label{position : absolute; width : 100%; bottom : 0; left : 0; z-index : 2; font-size : 12px; letter-spacing : -1px; border-radius : 4px; padding : 4px 0; backdrop-filter : blur(5px); transition : all 0.1s;}
-        .showcase-page .label.cost-1900{background : rgba(255, 197, 232, 0.5); color : #666; border-bottom-right-radius : 8px; border-bottom-left-radius : 8px;}
-        .pagenation{display : flex; align-items : center; justify-content : flex-end; margin : 20px 0; gap : 24px;}
-        .pagenation button{display : inline-flex; align-items : center; justify-content : center; border-radius : 50%; box-shadow : 2px 2px 2px rgba(0, 0, 0, 0.1); width : 45px; height : 45px; font-size : 20px; transition : all 0.15s; font-weight : bold;}
-        .pagenation button:hover{background:#000; color : #fff; box-shadow : inset 3px 3px 6px rgba(255, 255, 255, 0.6);}
+        .showcase-page .item .label{position : absolute; width : 100%; bottom : 0; left : 0; z-index : 2; font-size : 12px; letter-spacing : -1px; border-radius : 4px; padding : 4px 0; backdrop-filter : blur(5px); transition : all 0.1s; border-bottom-right-radius : 8px; border-bottom-left-radius : 8px;}
+        .showcase-page .label.cost-1900{background : rgba(255, 197, 232, 0.5); color : #666; }
+        .showcase-page .label.cost-3700{background : rgba(239, 255, 197, 0.5); color : #666; }
+        .showcase-page .label.cost-5200{background : rgba(255, 197, 232, 0.5); color : #666; }
+        .showcase-page .label.cost-5200{background : rgba(218, 213, 255, 0.5); color : #666; }
+        .showcase-page .label.cost-5600{background : rgba(183, 165, 220, 0.5); color : #666; }
+        .pagenation{display : flex; align-items : center; justify-content : flex-end; margin : 20px 0 0; gap : 24px;}
+        .pagenation button{display : inline-flex; align-items : center; justify-content : center; border-radius : 50%; box-shadow : 2px 2px 2px rgba(0, 0, 0, 0.1); width : 45px; height : 45px; font-size : 20px; transition : all 0.15s; font-weight : bold; border : 1px solid #dcdcdc; background : #fff;}
+        .pagenation button:hover{background:#1e1e1e; color : #fff; box-shadow : inset 3px 3px 3px rgba(255, 255, 255, 0.2); border : 1px solid #1e1e1e;}
         .pagenation button:active{box-shadow : none;}
-        .pagenation .prev{background : yellow;}
-        .pagenation .next{background : rgb(214, 175, 250);}
+        .pagenation .lock{background : #dcdcdc;}
+        .basket{position : relative; display : flex; align-items : center; justify-content : flex-end;}
+        .basket::after{content : ""; display : block; position : absolute; bottom : 34px; width : 150px; right : 15px; height : 6px; filter : blur(6px); border-radius : 50%; background : rgba(0, 0, 0, 0.8); z-index : 2;}
+        .basket .img-wrap{position : relative; width : 180px; height : 180px; display : inline-flex; align-items : center; justify-content : center; z-index : 1;}
+        .basket .img-wrap::before{content : ""; display : block; width : inherit; height : inherit; background : url(https://png.pngtree.com/png-clipart/20191122/original/pngtree-shopping-basket-icon-png-image_5184668.jpg) no-repeat center center / contain;}
+        .basket .img-wrap::after{content : ""; display : block; position : absolute; top : 0; left : 0; width : 100%; height : 73px; background : #fff; z-index : 1;}
+        .basket .item-in{position : absolute; top : 0; right : 0; width : 180px; height : 180px;}
+        .basket .item-in span{border-radius : 50%; width : 30px; height : 30px; background-color : red; display : inline-block; position : absolute; top : 0; left : 50%; transform : translate(-50%, 0); z-index : 3;}
+        .animate{
+            animation-name : itemInTheBasket;
+            animation-duration : 0.6s;
+            animation-iteration-count: 1;
+            animation-fill-mode : forwards;
+        }
+        @keyframes itemInTheBasket {
+            0%{
+                position : absolute;
+                top : 0;
+            }
+            70%{
+                top : calc(94% - 70px);
+            }
+            80%{
+                top : calc(100% - 70px);;
+            }
+            90%{
+                top : calc(96% - 70px);
+            }
+            100%{
+                position : static;
+                top : calc(100% - 70px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -112,10 +150,10 @@
                     <img src="" alt="">
                 </div>
             </div>
-            <div id="repeat">
+            <!-- <div id="repeat">
                 <p id="first"></p>
                 <p id="second"></p>
-            </div>
+            </div> -->
         </div>        
     </section>
     
@@ -132,11 +170,11 @@
 
     <section id="fold03">
         <div class="wrap">
-            <div class="showcase">
-                <div class="showcase-page" data-page-number="p-01">
+            <div class="showcase" style="--case-position : -460px;">
+                <div class="showcase-page" data-page-number="p-0">
                     <ul class="inner">
                         <li class="item">
-                            <button type="button" data-price="4500" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
                                     <img src="https://cdn-contents.weverseshop.io/public/shop/6a06b22d195eeca9cc7e3e9a72bbdbd3.png?q=95&w=320" alt="">
                                 </div>
@@ -175,268 +213,275 @@
                                 <div class="label cost-1900">1,900원</div>
                             </button>
                         </li>
+                        <!-- 참셋 끗 -->
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="3700" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
                                     <img src="https://cdn-contents.weverseshop.io/public/shop/a04ce2a66b0c14517d6ad8b0a69b15c5.png?q=95&w=320" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
+                        <!-- 그립톡 끝 -->
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="5600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
                                     <img src="https://cdn-contents.weverseshop.io/public/shop/cc70b24dba514d907cb836bdd61eaf11.png?q=95&w=320" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="5600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
                                     <img src="https://cdn-contents.weverseshop.io/public/shop/20a6bd9c62d2b9561dfea6cb56375c67.png?q=95&w=320" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="5600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
                                     <img src="https://cdn-contents.weverseshop.io/public/shop/eb19bd1ddc3fc81ff1d7f06bb30eb2db.png?q=95&w=320" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="5600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
                                     <img src="https://cdn-contents.weverseshop.io/public/shop/c4136b0c6e9bca33988c77215f315975.png?q=95&w=320" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="5600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
                                     <img src="https://cdn-contents.weverseshop.io/public/shop/442ce423bb69e853e036ac011f90b364.png?q=95&w=320" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="5200" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
                                     <img src="https://cdn-contents.weverseshop.io/public/shop/8761efd5aa60e96753b33136e5d49565.png?q=95&w=320" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <!-- 빙키봉 끝 -->
+                    </ul>
+                </div>
+                <div class="showcase-page show" data-page-number="p-1">
+                    <ul class="inner">
+                        <li class="item">
+                            <button type="button" data-price="1200" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/a6cd22d3ef226c448d1e920ef7ae3665.png?q=95&w=320" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="1200" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/0863ed77e4b46adf09480ff20c02a394.png?q=95&w=320" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="1200" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/ae76dc63efc5e5253960e1e1a4707a15.png?q=95&w=320" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="1200" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/d8c98c3f060477afcd8de3f6fd25f6fb.png?q=95&w=320" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="1200" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/7d7d6a622b5d18ad0db49631bc5431d6.png?q=95&w=320" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/f7a2d323b37319387c9a7a43796ebc92.png?q=95&w=320" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="aaaaaaa" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="aaaaaaa" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="aaaaaaa" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="aaaaaaa" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="aaaaaaa" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="aaaaaaa" alt="">
+                                </div>
+                                <div class="label"></div>
                             </button>
                         </li>
                     </ul>
                 </div>
-                <div class="showcase-page" data-page-number="p-02">
+                <div class="showcase-page" data-page-number="p-2">
                     <ul class="inner">
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/6a06b22d195eeca9cc7e3e9a72bbdbd3.png?q=95&w=320" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/2be7779d1626cf33827d20b6329b146d.png?q=95&w=" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/eb5c0ace6f5c3a9032aa455e7cb533fa.png?q=95&w=320" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/6fdf1762876e986169020bf1a0de512a.png?q=95&w=320" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/a08a1797a31ed13ceef05f379c3efbce.png?q=95&w=320" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/cc70b24dba514d907cb836bdd61eaf11.png?q=95&w=320" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/20a6bd9c62d2b9561dfea6cb56375c67.png?q=95&w=320" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/eb19bd1ddc3fc81ff1d7f06bb30eb2db.png?q=95&w=320" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/c4136b0c6e9bca33988c77215f315975.png?q=95&w=320" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/442ce423bb69e853e036ac011f90b364.png?q=95&w=320" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/8761efd5aa60e96753b33136e5d49565.png?q=95&w=320" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/f7a2d323b37319387c9a7a43796ebc92.png?q=95&w=320" alt="">
+                                    <img src="aaaaaaa" alt="">
                                 </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="showcase-page" data-page-number="p-03">
-                    <ul class="inner">
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/6a06b22d195eeca9cc7e3e9a72bbdbd3.png?q=95&w=320" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/2be7779d1626cf33827d20b6329b146d.png?q=95&w=" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/eb5c0ace6f5c3a9032aa455e7cb533fa.png?q=95&w=320" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/6fdf1762876e986169020bf1a0de512a.png?q=95&w=320" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/a08a1797a31ed13ceef05f379c3efbce.png?q=95&w=320" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/cc70b24dba514d907cb836bdd61eaf11.png?q=95&w=320" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/20a6bd9c62d2b9561dfea6cb56375c67.png?q=95&w=320" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/eb19bd1ddc3fc81ff1d7f06bb30eb2db.png?q=95&w=320" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/c4136b0c6e9bca33988c77215f315975.png?q=95&w=320" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/442ce423bb69e853e036ac011f90b364.png?q=95&w=320" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/8761efd5aa60e96753b33136e5d49565.png?q=95&w=320" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="1900" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/f7a2d323b37319387c9a7a43796ebc92.png?q=95&w=320" alt="">
-                                </div>
-                                <div class="label cost-1900">1,900원</div>
+                                <div class="label"></div>
                             </button>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="pagenation">
-                <button type="button" class="prev" aria-label="" onclick="showcasePagenation()"> ← </button>
-                <button type="button" class="next" aria-label="" onclick="showcasePagenation()"> → </button>
+                <button type="button" class="prev lock" aria-label="prev" onclick="showcasePagenation()"> ← </button>
+                <button type="button" class="next" aria-label="next" onclick="showcasePagenation()"> → </button>
+            </div>
+            <div class="basket">
+                <div class="img-wrap"></div>
+                <div class="item-in"><span class="animate"></span></div>
             </div>
         </div>
     </section>
@@ -484,7 +529,7 @@
             console.log(_arr_copy)
         }
 
-        copyObj(_arr)
+        // copyObj(_arr)
     </script>
     <!-- 가챠이벤트 -->
     <script>
@@ -620,13 +665,17 @@
         let _coin = 0;
         let _gaugeCount = GAUGE_KEY;
 
+        // 확률업 배열 추가
         const pushMemver = (arr, m) =>{
             arr.push(m);
             arr.push(m);
         }
+
+        // 멤버 별 확률업 배열 추가하기
         const rouletteRunFunctionMember = () =>{
             let _member = event.target.closest('button').getAttribute('data-name');
 
+            // 디폴트 배열 복사
             _addArr = JSON.parse(JSON.stringify(_prizes));
 
             let _gradeArr = _addArr.find(e => e.grade === 'S');
@@ -643,17 +692,23 @@
 
             rouletteRunFunction(_addArr);
         }
-
+        
         const rouletteRunFunctionNormal = () =>{
             rouletteRunFunction(_prizes);
         }
 
+        // 마일리지 게이지
+        const gaugeRencerFunction = () =>{
+            _gauge.style = '--gauge-width : ' + (100 - ((100 / GAUGE_KEY) * (GAUGE_KEY - _gaugeCount))) + '%';
+        }
+
+        // 룰렛 디폴트
         const rouletteRunFunction = (arr) =>{
             let _score =+ Math.floor(Math.random() * 101)//.toFixed(1);
             _coin++;
             _gaugeCount--;
             _charge.innerText = _coin;
-            _gauge.style = '--gauge-width : ' + (100 - ((100 / GAUGE_KEY) * (GAUGE_KEY - _gaugeCount))) + '%';
+            gaugeRencerFunction();
             function mileageCount(e){
                 if(_score > 3 && _gaugeCount == 0){
                         _gaugeCount = GAUGE_KEY;
@@ -661,6 +716,8 @@
                         _score = 0;
                     }
             }
+
+            // 배열 돌면서 해당하는 그레이드 찾아 결과물 노출
             for(var i=0; i<=arr.length; i++){
                 // if(i == 1){
                 //     continue;  //작동 [0,2,3,4]
@@ -674,6 +731,7 @@
                 let e = arr[i];                
 
                 mileageCount(e);
+                // 스코어에 따른 결과물 노출
                 if(_score <= e.percentage){
                     let _count = e.photo.length;
                     let _num = Math.floor(Math.random() * _count);
@@ -686,12 +744,18 @@
                     _label.classList.add(_grade);
                     _label.innerHTML = _grade;
                     
+                    // S급 뽑기 성공 시
                     if(e.grade == 'S'){
                         _coin = 0;
                         _charge.innerText = _coin;
                         _gaugeCount++;
+                        gaugeRencerFunction();
+                        //천장 이후 게이지 - 되는 현상 초기화
+                        if(_gaugeCount > 70){
+                            _gaugeCount = GAUGE_KEY;
+                        }
                     }
-                    //console.log(_num)
+                    // 확률업 마크 노출
                     if(_score <= 3 && e.photo.length >= 7 && _num > 4){
                         _add.classList.remove('hide')
                     }else{
@@ -756,18 +820,84 @@
                 _cardBox.style.boxShadow = '';
                 _card.style.transform = '';
                 _light.style.backgroundImage = '';
-        })
+            })
         }
     </script>
     <!-- 옹스마켓 -->
     <script>
-        let _itemAll = document.querySelectorAll("li.item");
-        for(var i = 0; i < _itemAll.length; i++){
-            let _btn = Number(_itemAll[i].querySelector('button').getAttribute('data-price'));
-            let _label = _itemAll[i].querySelector('.label');
-            _label.classList.add(`cost-${_btn}`);
-            _label.innerText = _btn.toLocaleString('ko-KR') + '원';
+        // 속성 data-price 받아서 텍스트랑 클래스 추가
+        const priceRender = ()=>{
+
+            let _itemAll = document.querySelectorAll("li.item");
+            for(var i = 0; i < _itemAll.length; i++){
+                let _btn = Number(_itemAll[i].querySelector('button').getAttribute('data-price'));
+                let _label = _itemAll[i].querySelector('.label');
+                _label.classList.add(`cost-${_btn}`);
+                _label.innerText = _btn.toLocaleString('ko-KR') + '원';
+            }
         }
+
+        // 스와이퍼.. 이걸 왜 사서 고생했냐
+        const showcasePagenation = () =>{
+            let _btnType = String(event.target.getAttribute('aria-label'));
+            const _showcase = document.querySelector('.showcase');
+            let _show = document.querySelector('.showcase .show');
+            let _prev = _show.previousElementSibling;
+            let _next = _show.nextElementSibling;
+            let TRANSITION_KEY = _showcase.clientWidth;
+
+            const positionMove = () =>{
+                _show = document.querySelector('.showcase .show');
+                let _pos = Number(_show.getAttribute('data-page-number').replace("p-",""));
+                _showcase.style = `--case-position : -${(TRANSITION_KEY * _pos)}px`
+                if(_pos == 0){
+                    event.target.classList.add('lock');
+                }else if(_pos == 2){
+                    event.target.classList.add('lock');
+                }
+            }
+
+            switch(_btnType){
+                case 'prev' : 
+                        if(_prev != null){
+                            _show.classList.remove('show');
+                            _prev.classList.add('show');
+                            positionMove();                            
+                            event.target.nextElementSibling.classList.remove('lock');
+                        }else{
+                            break;
+                        }                    
+                    break;
+                case 'next' : 
+                    if(_next != null){
+                            _show.classList.remove('show');
+                            _next.classList.add('show');
+                            positionMove();
+                            event.target.previousElementSibling.classList.remove('lock');
+                        }else{
+                            break;
+                        }
+                    break;
+            }
+        }
+        
+        //카트 담기
+        const itemChoiceFunction = () =>{
+            const _item = document.createElement('span');
+            _item.classList.add('animate');
+            const _basket = document.querySelector('.basket .item-in');
+            _basket.appendChild(_item);
+            let i = 0;
+            console.log(i)
+            i++;
+            if(i > 3){
+                _item.classList.add('after-hide');
+            }
+        }
+        
+        const ongsMarketStart = () =>{
+        }
+        priceRender();
     </script>
 </body>
 </html>
