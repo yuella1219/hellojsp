@@ -7,12 +7,14 @@
     <title>test</title>
     <style>
         :root{--gauge-width : 100%;}
-        *{margin : 0; padding : 0; text-decoration : none; list-style : none;}
+        *{margin : 0; padding : 0; text-decoration : none; list-style : none; }
         button{background : none; border-style : none;}
         .hide{display : none !important;}
-        .wrap{padding : 20px;}
+        body{background : #eee;}
+        body::-webkit-scrollbar{display : none;}
+        .wrap{padding : 0 20px 20px; max-width : 500px; margin : 0 auto; background : #fff;}
         /*  */
-        .fold-btn-wrap{display : flex; align-items : center; justify-content : flex-start; gap : 12px; padding : 24px 20px 0;}
+        .fold-btn-wrap{display : flex; align-items : center; justify-content : flex-start; gap : 12px; padding : 24px 20px; background : #fff; max-width : 500px; margin : 0 auto;}
         .fold-btn-wrap button{border-radius : 8px; padding : 6px 12px; font-weight : bold; box-shadow : 2px 2px 2px rgba(0, 0, 0, 0.05);}
         .fold-btn-wrap button:active{box-shadow : inset 4px 4px 4px rgba(0, 0, 0, 0.3);}
         .fold-btn-wrap button:first-of-type{background : yellow;}
@@ -49,13 +51,13 @@
         .copy-obj p{font-size : 14px; line-height : 22px; display : flex; flex-direction : column;}
         /*  */
         :root{--scaled-x : 0; --scaled-y : 0; --scaled-z : 0;}
-        .card-wrap{padding : 24px 20px 0;}
+        .card-wrap{padding : 0 20px 48px; max-width : 500px; margin : 0 auto; background : #fff;}
         .card-wrap #card{width : 300px; height : 450px; margin : 0 auto; transition : 0.2s all; position : relative;}
         .card-wrap #card:hover{transform : rotate3d(var(--scaled-x), var(--scaled-y), 0, var(--scaled-z)) scale3d(1.05, 1.05, 1.05);}
         .card-wrap #card .img-wrap{display : flex; align-items : center; background : #fff; border : 1px solid #6a85b5; border-radius : 24px; box-sizing : border-box; box-shadow : 6px 6px 6px rgba(0, 0, 0, 0.3); height : inherit;}
         .card-wrap #card .light{position : absolute; width : 100%; height : 100%; z-index : 1; border-radius : 24px;}
         /*  */
-        .showcase{overflow : hidden; display : flex; align-items : flex-start; justify-content : flex-start; flex-wrap : nowrap;}
+        .showcase{overflow : hidden; display : flex; align-items : flex-start; justify-content : flex-start; flex-wrap : nowrap; max-width : 480px;}
         .showcase-page{flex : 0 0 90%; border-radius : 12px; border : 2px solid #6a85b5; overflow : hidden; box-sizing : border-box; padding : 16px; margin-right : 10%;}
         .showcase-page .inner{display : grid; grid-template-columns : repeat(4, 1fr); gap : 14px;}
         .showcase-page .item{height : 99px; position : relative; transition : transform 0.1s; border : 1px solid #cecece; border-radius : 8px;}
@@ -716,41 +718,46 @@
             let _Box = document.querySelector(`#${_foldBox}`);
 
             _Box.toggleAttribute('hidden');
+            if(_foldBox = `fold02`){
+                cardEventFunction();
+            }
         }
     </script>
     <!-- 카드 이벤트 -->
     <script>
-        const _frame = document.querySelector('.card-wrap');
-        const _card = document.querySelector('#card');
-        const _cardBox = document.querySelector('#card .img-wrap');
-        const _light = document.querySelector('.light');
+        const cardEventFunction = () =>{
+            const _frame = document.querySelector('.card-wrap');
+            const _card = document.querySelector('#card');
+            const _cardBox = document.querySelector('#card .img-wrap');
+            const _light = document.querySelector('.light');
 
-        let { x, y, width, height } = _frame.getBoundingClientRect();
+            let { x, y, width, height } = _frame.getBoundingClientRect();
 
-        const mouseMove = (e)=>{
-            const left = e.clientX - x;
-            const top = e.clientY - y;
-            const _centerX = left - width / 2;
-            const _centerY = top - height / 2;
-            const d = Math.sqrt(_centerX**2 + _centerY**2);
+            const mouseMove = (e)=>{
+                const left = e.clientX - x;
+                const top = e.clientY - y;
+                const _centerX = left - width / 2;
+                const _centerY = top - height / 2;
+                const d = Math.sqrt(_centerX**2 + _centerY**2);
 
-            _card.style = `--scaled-x : ${-_centerY / 100}; --scaled-y : ${_centerX / 100}; --scaled-z : ${d / 10}deg;`
-            _light.style.backgroundImage = `radial-gradient(circle at ${left}px ${top}px, rgba(255,255,255,0.4) 0%, rgba(93,255,249,0.05) 70%, rgba(255,255,255,0.08587184873949583) 100%)`
-            
-            _cardBox.style = `box-shadow : ${-_centerX / 10}px ${-_centerY / 10}px 10px rgba(0, 0, 0, 0.15);`
-            // console.log(_cardBox)
+                _card.style = `--scaled-x : ${-_centerY / 100}; --scaled-y : ${_centerX / 100}; --scaled-z : ${d / 10}deg;`
+                _light.style.backgroundImage = `radial-gradient(circle at ${left}px ${top}px, rgba(255,255,255,0.4) 0%, rgba(93,255,249,0.05) 70%, rgba(255,255,255,0.08587184873949583) 100%)`
+                
+                _cardBox.style = `box-shadow : ${-_centerX / 10}px ${-_centerY / 10}px 10px rgba(0, 0, 0, 0.15);`
+                // console.log(_cardBox)
+            }
+
+            _card.addEventListener('mouseenter', ()=>{
+                _card.addEventListener('mousemove', mouseMove)
+            })
+
+            _card.addEventListener('mouseleave', ()=>{
+                _card.removeEventListener('mousemove', mouseMove)
+                _cardBox.style.boxShadow = '';
+                _card.style.transform = '';
+                _light.style.backgroundImage = '';
+        })
         }
-
-        _card.addEventListener('mouseenter', ()=>{
-            _card.addEventListener('mousemove', mouseMove)
-        })
-
-        _card.addEventListener('mouseleave', ()=>{
-            _card.removeEventListener('mousemove', mouseMove)
-            _cardBox.style.boxShadow = '';
-            _card.style.transform = '';
-            _light.style.backgroundImage = '';
-        })
     </script>
     <!-- 옹스마켓 -->
     <script>
