@@ -86,34 +86,39 @@
         .basket .img-wrap{position : relative; width : 180px; height : 180px; display : inline-flex; align-items : center; justify-content : center; z-index : 1;}
         .basket .img-wrap::before{content : ""; display : block; width : inherit; height : inherit; background : url(https://png.pngtree.com/png-clipart/20191122/original/pngtree-shopping-basket-icon-png-image_5184668.jpg) no-repeat center center / contain;}
         .basket .img-wrap::after{content : ""; display : block; position : absolute; top : 0; left : 0; width : 100%; height : 73px; background : #fff; z-index : 1;}
-        .basket .item-in{position : absolute; top : 0; right : 0; width : 180px; height : 180px;}
-        .basket .item-in span{border-radius : 50%; width : 30px; height : 30px; background-color : red; display : inline-block; position : absolute; top : 0; left : 50%; transform : translate(-50%, 0); z-index : 3;}
+        .basket .item-in{position : absolute; top : 0; right : 0; width : 100px; height : 180px; margin-right : 40px; display : flex; align-items : flex-end; justify-content : center; align-content : flex-end; flex-wrap : wrap;}
+        .basket .item-in span{border-radius : 50%; width : 30px; height : 30px; background-color : red; display : inline-block; transform : translate(0, -150px); z-index : 3; flex-shrink : 0;}
         .animate{
             animation-name : itemInTheBasket;
-            animation-duration : 0.6s;
+            animation-duration : 0.4s;
             animation-iteration-count: 1;
             animation-fill-mode : forwards;
         }
         @keyframes itemInTheBasket {
             0%{
-                position : absolute;
-                top : 0;
+               transform : translate(0, -150px);
             }
             70%{
-                top : calc(94% - 70px);
+                transform : translate(0, -40px);
             }
             80%{
-                top : calc(100% - 70px);;
+                transform : translate(0, -50px);
             }
             90%{
-                top : calc(96% - 70px);
+                transform : translate(0, -40px);
+            }
+            96%{
+                transform : translate(0, -44px);
             }
             100%{
-                position : static;
-                top : calc(100% - 70px);
+                transform : translate(0, -40px);
             }
         }
-    </style>
+        .bg-add{position : absolute; bottom : 42px; right : 94px; background : #000; width : 7px; height :65px; z-index : 99;}
+        .bg-add:nth-of-type(2){bottom : 42px; right : 78px; width : 7px; height :65px;}
+        .bg-add:nth-of-type(3){bottom : 37px; right : 66px; width : 50px; height :12px;}
+        .bg-add:nth-of-type(4){bottom : 91px; right : 66px; width : 50px; height :16px;}
+    </style> 
 </head>
 <body>
     <div class="fold-btn-wrap">
@@ -482,6 +487,10 @@
             <div class="basket">
                 <div class="img-wrap"></div>
                 <div class="item-in"><span class="animate"></span></div>
+                <span class="bg-add"></span>
+                <span class="bg-add"></span>
+                <span class="bg-add"></span>
+                <span class="bg-add"></span>
             </div>
         </div>
     </section>
