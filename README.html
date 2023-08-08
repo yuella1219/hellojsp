@@ -12,7 +12,7 @@
         .hide{display : none !important;}
         body{background : #eee;}
         body::-webkit-scrollbar{display : none;}
-        .wrap{padding : 0 20px 20px; max-width : 500px; margin : 0 auto; background : #fff;}
+        .wrap{padding : 0 20px 20px; max-width : 500px; margin : 0 auto; background : #fff; position : relative;}
         /*  */
         .fold-btn-wrap{display : flex; align-items : center; justify-content : flex-start; gap : 12px; padding : 24px 20px; background : #fff; max-width : 500px; margin : 0 auto;}
         .fold-btn-wrap button{border-radius : 8px; padding : 6px 12px; font-weight : bold; box-shadow : 2px 2px 2px rgba(0, 0, 0, 0.05);}
@@ -57,7 +57,7 @@
         .card-wrap #card .img-wrap{display : flex; align-items : center; background : #fff; border : 1px solid #6a85b5; border-radius : 24px; box-sizing : border-box; box-shadow : 6px 6px 6px rgba(0, 0, 0, 0.3); height : inherit;}
         .card-wrap #card .light{position : absolute; width : 100%; height : 100%; z-index : 1; border-radius : 24px;}
         /*  */
-        :root{--case-position : 0;}
+        :root{--case-position : 0; --timer-gauge : 0;}
         .showcase{overflow : hidden; display : flex; align-items : flex-start; justify-content : flex-start; flex-wrap : nowrap; max-width : 480px;}
         .showcase-page{flex : 0 0 90%; border-radius : 4px; border : 2px solid #bdbaba; overflow : hidden; box-sizing : border-box; padding : 16px; margin-right : 10%; transition : transform 0.3s; transform : translateX(var(--case-position))}
         .showcase-page .inner{display : grid; grid-template-columns : repeat(4, 1fr); gap : 14px;}
@@ -65,29 +65,41 @@
         .showcase-page .item:hover{transform : scale(1.1); border : 1px solid #7fa1ff;}
         .showcase-page .item:active {transition : transform 0s; transform : scale(1);}
         .showcase-page .item:active .img-wrap{border : 1px solid #7fa1ff; box-shadow : inset 3px 3px 3px rgba(0, 0, 0, 0.1);}
-        .showcase-page .item:hover .label{font-size : 14px; color : #000;}
+        .showcase-page .item:hover .label{font-size : 14px;}
         .showcase-page .item button{display : block; height : inherit;}
         .showcase-page .item .img-wrap{width : 100%; height : inherit; overflow : hidden; object-fit : fill; display : inline-flex; align-items : center; justify-content : center; border-radius : 8px; position : relative; z-index : 1;}
         .showcase-page .item img{display : block; width : 120%;}
         .showcase-page .item::after {content : ""; position : absolute; display : block; width : 94%; border-radius : 20%; height : 4px; background : rgba(0, 0, 0, 0.4); filter : blur(4px); bottom : -1px; left : 3%;}
-        .showcase-page .item .label{position : absolute; width : 100%; bottom : 0; left : 0; z-index : 2; font-size : 12px; letter-spacing : -1px; border-radius : 4px; padding : 4px 0; backdrop-filter : blur(5px); transition : all 0.1s; border-bottom-right-radius : 8px; border-bottom-left-radius : 8px;}
-        .showcase-page .label.cost-1900{background : rgba(255, 197, 232, 0.5); color : #666; }
-        .showcase-page .label.cost-3700{background : rgba(239, 255, 197, 0.5); color : #666; }
-        .showcase-page .label.cost-5200{background : rgba(255, 197, 232, 0.5); color : #666; }
-        .showcase-page .label.cost-5200{background : rgba(218, 213, 255, 0.5); color : #666; }
-        .showcase-page .label.cost-5600{background : rgba(183, 165, 220, 0.5); color : #666; }
+        .showcase-page .item .label{position : absolute; width : 100%; bottom : 0; left : 0; z-index : 2; font-size : 12px; letter-spacing : -1px; border-radius : 4px; padding : 4px 0; backdrop-filter : blur(5px); transition : all 0.1s; border-bottom-right-radius : 8px; border-bottom-left-radius : 8px; color : #fff;}
+        .cost-1900{background : #FDD835; color : #000 !important;}
+        .cost-3700{background : #546E7A;}
+        .cost-5200{background : #D81B60;}
+        .cost-5200{background : #039BE5;}
+        .cost-5600{background : #3949AB;}
+        .cost-1200{background : #8E24AA;}
+        .cost-2100{background : #5E35B1;}
+        .cost-2800{background : #D81B60;}
+        .cost-4600{background : #F4511E;}
         .pagenation{display : flex; align-items : center; justify-content : flex-end; margin : 20px 0 0; gap : 24px;}
         .pagenation button{display : inline-flex; align-items : center; justify-content : center; border-radius : 50%; box-shadow : 2px 2px 2px rgba(0, 0, 0, 0.1); width : 45px; height : 45px; font-size : 20px; transition : all 0.15s; font-weight : bold; border : 1px solid #dcdcdc; background : #fff;}
         .pagenation button:hover{background:#1e1e1e; color : #fff; box-shadow : inset 3px 3px 3px rgba(255, 255, 255, 0.2); border : 1px solid #1e1e1e;}
         .pagenation button:active{box-shadow : none;}
-        .pagenation .lock{background : #dcdcdc;}
-        .basket{position : relative; display : flex; align-items : center; justify-content : flex-end;}
+        .pagenation .lock{background : #dcdcdc; opacity : 0.3;}
+        .pagenation .lock:hover{background : #dcdcdc; opacity : 0.3; color : #000; border : 1px solid #dcdcdc;}
+        .bot-wrap{display : flex; align-items : center; justify-content : space-between; gap : 24px;}
+        .timer{flex-grow : 1;}
+        .timer div{display : flex; align-items : center; justify-content : flex-start;}
+        .timer div span{font-size : 14px; font-weight : bold; color : #666; flex-shrink : 0;}
+        .timer div .timer-bar{border-radius : 50px; flex : 1 0 auto; height : 14px; border : 1px solid #eee; margin-left : 4px; background : linear-gradient(90deg, rgba(77,208,225,1) 0%, rgba(33, 150, 243, 1) 100%); position : relative; overflow : hidden;}
+        .timer div .timer-bar::after{content : ""; display : block; position : absolute; top : 0; left : 0; width : var(--timer-gauge); height : 100%; background : #fff;}
+        .basket{position : relative; display : flex; align-items : center; justify-content : flex-end; flex-shrink : 0;}
         .basket::after{content : ""; display : block; position : absolute; bottom : 34px; width : 150px; right : 15px; height : 6px; filter : blur(6px); border-radius : 50%; background : rgba(0, 0, 0, 0.8); z-index : 2;}
         .basket .img-wrap{position : relative; width : 180px; height : 180px; display : inline-flex; align-items : center; justify-content : center; z-index : 1;}
         .basket .img-wrap::before{content : ""; display : block; width : inherit; height : inherit; background : url(https://png.pngtree.com/png-clipart/20191122/original/pngtree-shopping-basket-icon-png-image_5184668.jpg) no-repeat center center / contain;}
         .basket .img-wrap::after{content : ""; display : block; position : absolute; top : 0; left : 0; width : 100%; height : 73px; background : #fff; z-index : 1;}
         .basket .item-in{position : absolute; top : 0; right : 0; width : 100px; height : 180px; margin-right : 40px; display : flex; align-items : flex-end; justify-content : center; align-content : flex-start; flex-wrap : wrap-reverse;}
-        .basket .item-in span{border-radius : 50%; width : 30px; height : 30px; background-color : red; display : inline-block; transform : translate(0, -150px); z-index : 3; flex-shrink : 0;}
+        .basket .item-in span{border-radius : 50%; width : 30px; height : 30px; display : inline-block; transform : translate(0, -150px); z-index : 3; flex-shrink : 0; border : 1px solid #eee; position : relative;}
+        .basket .item-in span::after{position : absolute; content : ""; display : block; width : 100%; height : 100%; box-shadow : inset 2px 2px 2px rgba(0, 0, 0, 0.05); z-index : 1;}
         .animate{
             animation-name : itemInTheBasket;
             animation-duration : 0.4s;
@@ -114,6 +126,17 @@
                 transform : translate(0, -40px);
             }
         }
+        .start-blur{position : absolute; top : 0; left : 0; width : 100%; height : 100%; backdrop-filter : blur(6px); background : rgba(203, 255, 249, 0.5); padding : 20px; z-index : 999; box-sizing : border-box; display : flex; align-items : center; justify-content : center; flex-direction : column;}
+        .start-blur .blur-title{font-size : 28px; font-weight : bold; letter-spacing : 1px; text-align : center; margin-bottom : 24px; text-shadow : 3px 3px rgba(255, 255, 255, 0.5);}
+        .start-blur .button-wrap{display : flex; align-items : center; justify-content : center; gap : 0 24px;}
+        .start-blur .button-wrap button{border-radius : 8px; box-sizing : border-box; box-shadow : 3px 3px 3px rgba(0, 0, 0, 0.1); font-size : 16px; display : inline-flex; align-items : center; justify-content : center; width : 96px; height : 42px;}
+        .start-blur .button-wrap button:active{box-shadow : inset 3px 3px 3px rgba(0, 0, 0, 0.3); font-weight : bold;}
+        .start-btn{background : #FFF176;}
+        .readme-btn{background : #AED581;}
+        .start-blur .read-me{border-radius : 12px; background : #fff; padding : 20px; margin-bottom : 24px;}
+        .start-blur .read-me p{font-size : 16px; line-height : 26px; margin-bottom : 6px; word-break : keep-all;}
+        .start-blur .read-me p span{text-decoration : line-through; font-size : 12px; display : block; text-indent : 16px; font-weight : 300; filter : blur(2px);}
+
     </style> 
 </head>
 <body>
@@ -318,7 +341,15 @@
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="2800" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/3d88f969ddc1816a735cfb5ed980a203.png?q=95&w=320" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="2100" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
                                     <img src="https://cdn-contents.weverseshop.io/public/shop/f7a2d323b37319387c9a7a43796ebc92.png?q=95&w=320" alt="">
                                 </div>
@@ -334,41 +365,33 @@
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="4600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/5fc3a320eb0567d729c456c96c5a6468.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="4600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/1f69647a97b3ec9210f6a0f480c50a10.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="4600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/173800c87eac6a322121f0e9fa36345f.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="4600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
-                                </div>
-                                <div class="label"></div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/b53ef2a19a98e8a54da034a6df6ca5de.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -480,14 +503,33 @@
                 <button type="button" class="prev lock" aria-label="prev" onclick="showcasePagenation()"> ← </button>
                 <button type="button" class="next" aria-label="next" onclick="showcasePagenation()"> → </button>
             </div>
-            <div class="basket">
-                <div class="img-wrap"></div>
-                <div class="item-in"><span class="animate"></span></div>
-                <span class="bg-add"></span>
-                <span class="bg-add"></span>
-                <span class="bg-add"></span>
-                <span class="bg-add"></span>
+            <div class="bot-wrap">
+                <div class="timer">
+                    <div><span>남은 시간 : </span><span class="timer-bar"></span></div>
+                </div>
+                <div class="basket">
+                    <div class="img-wrap"></div>
+                    <div class="item-in"></div>
+                </div>
             </div>
+            <div class="resutle-wrap">
+                <button type="button" id="resulte">결과보기</button>
+            </div>
+            <div class="start-blur hide">
+                <h1 class="blur-title">뉴진스 마켓🐰</h1>
+                <div class="read-me hide">
+                    <p>1. 사랑스러운 뉴진스의 굿즈를 카트에 담습니다.</p>
+                    <p>2. 정확하게 3만원 금액을 맞추면 게임 클리어! 사랑스러운 뉴깅이들 움짤을 보실 수 있어요.</p>
+                    <p>3. 총 제한 시간은 2분이며 카트 내 담을 수 있는 아이템 최대 갯수는 11개 입니다.</p>
+                    <p>4. 시간이 너무 짧아요! 아이템 갯수를 늘리고 싶어요! <span class="cancle" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">소스 열어서 커스텀 하시던가</span></p>
+                </div>
+                <div class="button-wrap">
+                    <button type="button" class="start-btn" onclick="newJeansMarketStart()">게임 시작</button>
+                    <button type="button" class="readme-btn" onclick="newJeansMarketReadMe()">설명 보기</button>
+                </div>
+            </div>
+        </div>
+        <div class="playlist">
         </div>
     </section>
     <!-- 재귀함수 연습 -->
@@ -790,6 +832,9 @@
             if(_foldBox = `fold02`){
                 cardEventFunction();
             }
+            if(_foldBox = `fold03`){
+                newJeansReset();
+            }
         }
     </script>
     <!-- 카드 이벤트 -->
@@ -828,7 +873,7 @@
             })
         }
     </script>
-    <!-- 옹스마켓 -->
+    <!-- 뉴진스마켓 -->
     <script>
         // 속성 data-price 받아서 텍스트랑 클래스 추가
         const priceRender = ()=>{
@@ -843,9 +888,9 @@
         }
 
         // 스와이퍼.. 이걸 왜 사서 고생했냐
+        const _showcase = document.querySelector('.showcase');
         const showcasePagenation = () =>{
             let _btnType = String(event.target.getAttribute('aria-label'));
-            const _showcase = document.querySelector('.showcase');
             let _show = document.querySelector('.showcase .show');
             let _prev = _show.previousElementSibling;
             let _next = _show.nextElementSibling;
@@ -885,24 +930,147 @@
                     break;
             }
         }
-        
+
         //카트 담기
         let _ballCount = 0;
-        const itemChoiceFunction = () =>{
+        // 카트 안에 볼 생성
+        // 색상 추가 > 배열에 담은 것 불러오기
+        const ballCreateAction = () =>{
             const _item = document.createElement('span');
-            _item.classList.add('animate');
             const _basket = document.querySelector('.basket .item-in');
-            if(_ballCount > 10){
+            let _btnType = String(event.target.closest('button').getAttribute('data-price'));
+
+            _ballCount++;
+            _basket.appendChild(_item);
+            _item.classList.add('animate');
+            _item.classList.add(`cost-${_btnType}`);
+
+            if(_ballCount > 9){
+                _item.style = `margin-bottom : -30px`;
+                setTimeout(()=>{
+                    _item.classList.add('hide')
+                }, 400);
+            }
+            if(_ballCount > 15){
                 alert('더 이상 담을 수 없습니다.')
                 return;
             }
-            _ballCount++;
-            _basket.appendChild(_item);
+        }
+
+        // 타이머
+        const TOTAL_TIME = 150;
+        let _ontime = TOTAL_TIME;
+        const _timer = document.querySelector('.timer-bar');
+        let _check;
+        const timerStart = () =>{
+            const timerCalculator = () =>{
+                _ontime--;
+                _timer.style = '--timer-gauge : ' + (((100 / TOTAL_TIME) * (TOTAL_TIME - _ontime))) + '%';
+                
+                if(_ontime <= 0){
+                    clearInterval(_check);
+                    marketResulteFail();
+                }
+            }
+            _check =  setInterval(() => {
+                    timerCalculator();
+                }, 1000);
+        }
+
+        // 게임 시작 전 리셋
+        const _readMeObj = document.querySelector('.start-blur .read-me');
+        const _blur = document.querySelector('.start-blur');
+        const _readBtn = document.querySelector('.start-blur .readme-btn');
+
+        const newJeansReset = () =>{
+            // 시작 가림막 리셋
+            const _basket = document.querySelector('.basket .item-in');
+            _blur.classList.remove('hide');
+            _readMeObj.classList.add('hide');
+            _readBtn.classList.remove('hide');
+
+            // 스와이퍼 리셋
+            let _show = document.querySelector('.showcase .show');
+            let _pos = Number(_show.getAttribute('data-page-number').replace("p-",""));
+            _pos = 0;
+            _show.classList.remove('shoe');
+            const _firstPage = document.querySelector('.showcase-page:first-of-type');
+            _firstPage.classList.add('show');
+            const _next = document.querySelector('.pagenation .next')
+            if(_next.classList.contains('lock')){
+                _next.classList.remove('lock');
+            }
+            _showcase.style = `--case-position : 0;`
+
+            // 바구니 초기화
+            _ballCount = 0;
+            _wholeCost = 0;
+            while(_basket.hasChildNodes()){
+                _basket.removeChild(_basket.firstChild);
+            }
+
+            // 타이머 초기화
+            _ontime = 150;
+            _timer.style = '--timer-gauge : 0%';
+
+            // 타이머 리셋
+            clearInterval(_check);
         }
         
-        const ongsMarketStart = () =>{
+        // 설명보기
+        const newJeansMarketReadMe = () =>{
+            _readBtn.classList.add('hide');
+            _readMeObj.classList.remove('hide');
         }
+
+        
+
+        const marketResulteFail = () => {
+                alert('fail');
+                newJeansReset();
+                // clearInterval(_check);
+        }
+
+        // 결과 버튼
+        const costCalculate = (i) => {
+            const TOTAL_KEY = 30000;
+            if(i > TOTAL_KEY || i < TOTAL_KEY){
+                marketResulteFail();
+            }else if(i == TOTAL_KEY){
+                alert('succese');
+                newJeansReset();
+            }
+        }
+
+        let _wholeCost = 0;
+        // 담은 물건 계산하기
+        const ballCostCount = () => {
+            let _cost = Number(event.target.closest('button').getAttribute('data-price'));
+            _wholeCost = _wholeCost + _cost;
+        }
+
+        //물건 클릭 시 필요 함수 호출
+        const itemChoiceFunction = () =>{
+            ballCreateAction();            
+            ballCostCount();
+        }
+        
+        const newjeansMarket = () =>{
+            newJeansReset();
+        }
+        
         priceRender();
+
+        const newJeansMarketStart = () =>{
+            _blur.classList.add('hide');
+            timerStart();
+            // newJeansClockStart();
+        }
+
+        const _resulteBtn = document.querySelector('#resulte');
+        _resulteBtn.addEventListener('click', (()=>{
+            costCalculate(_wholeCost);
+        }))
     </script>
 </body>
 </html>
