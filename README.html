@@ -59,27 +59,25 @@
         /*  */
         :root{--case-position : 0; --timer-gauge : 0;}
         .showcase{overflow : hidden; display : flex; align-items : flex-start; justify-content : flex-start; flex-wrap : nowrap; max-width : 480px;}
-        .showcase-page{flex : 0 0 90%; border-radius : 4px; border : 2px solid #bdbaba; overflow : hidden; box-sizing : border-box; padding : 16px; margin-right : 10%; transition : transform 0.3s; transform : translateX(var(--case-position))}
-        .showcase-page .inner{display : grid; grid-template-columns : repeat(4, 1fr); gap : 14px;}
-        .showcase-page .item{height : 99px; position : relative; transition : transform 0.1s; border : 1px solid #cecece; border-radius : 8px;}
-        .showcase-page .item:hover{transform : scale(1.1); border : 1px solid #7fa1ff;}
+        .showcase-page{flex : 0 0 90%; border-radius : 4px; border : 2px solid #eee; overflow : hidden; box-sizing : border-box; padding : 16px; margin-right : 10%; transition : transform 0.3s; transform : translateX(var(--case-position))}
+        .showcase-page .inner{display : grid; grid-template-columns : repeat(4, 1fr); gap : 24px 12px;}
+        .showcase-page .item{position : relative; transition : transform 0.1s; border-radius : 8px;}
+        .showcase-page .item:hover{transform : scale(1.1);}
+        /* .showcase-page .item:hover{box-shadow : 2px 4px 7px rgba(0, 0, 0, 0.3);} */
         .showcase-page .item:active {transition : transform 0s; transform : scale(1);}
-        .showcase-page .item:active .img-wrap{border : 1px solid #7fa1ff; box-shadow : inset 3px 3px 3px rgba(0, 0, 0, 0.1);}
+        .showcase-page .item:active .img-wrap{box-shadow : inset 3px 3px 3px rgba(0, 0, 0, 0.1);}
         .showcase-page .item:hover .label{font-size : 14px;}
         .showcase-page .item button{display : block; height : inherit;}
         .showcase-page .item .img-wrap{width : 100%; height : inherit; overflow : hidden; object-fit : fill; display : inline-flex; align-items : center; justify-content : center; border-radius : 8px; position : relative; z-index : 1;}
         .showcase-page .item img{display : block; width : 120%;}
-        .showcase-page .item::after {content : ""; position : absolute; display : block; width : 94%; border-radius : 20%; height : 4px; background : rgba(0, 0, 0, 0.4); filter : blur(4px); bottom : -1px; left : 3%;}
-        .showcase-page .item .label{position : absolute; width : 100%; bottom : 0; left : 0; z-index : 2; font-size : 12px; letter-spacing : -1px; border-radius : 4px; padding : 4px 0; backdrop-filter : blur(5px); transition : all 0.1s; border-bottom-right-radius : 8px; border-bottom-left-radius : 8px; color : #fff;}
-        .cost-1900{background : #FDD835; color : #000 !important;}
-        .cost-3700{background : #546E7A;}
-        .cost-5200{background : #D81B60;}
-        .cost-5200{background : #039BE5;}
-        .cost-5600{background : #3949AB;}
-        .cost-1200{background : #8E24AA;}
-        .cost-2100{background : #5E35B1;}
-        .cost-2800{background : #D81B60;}
-        .cost-4600{background : #F4511E;}
+        .showcase-page .item:hover::after {content : ""; position : absolute; display : block; width : 94%; border-radius : 20%; height : 4px; background : rgba(0, 0, 0, 0.7); filter : blur(4px); bottom : -1px; left : 3%;}
+        .showcase-page .item .label{position : absolute; width : 100%; bottom : 0; left : 0; z-index : 2; font-size : 12px; letter-spacing : -0.4px; padding : 4px 0; backdrop-filter : blur(5px); transition : all 0.1s; border-bottom-right-radius : 8px; border-bottom-left-radius : 8px; color : #fff;}
+        .cost-800{background : #ea72a0;}
+        [class*="cost-1"]{background : #ea72a0;}
+        [class*="cost-2"]{background : #5E35B1;}
+        [class*="cost-3"]{background : #039BE5;}
+        [class*="cost-4"]{background : #39ab87;}
+        [class*="cost-5"]{background : #3949AB;}
         .pagenation{display : flex; align-items : center; justify-content : flex-end; margin : 20px 0 0; gap : 24px;}
         .pagenation button{display : inline-flex; align-items : center; justify-content : center; border-radius : 50%; box-shadow : 2px 2px 2px rgba(0, 0, 0, 0.1); width : 45px; height : 45px; font-size : 20px; transition : all 0.15s; font-weight : bold; border : 1px solid #dcdcdc; background : #fff;}
         .pagenation button:hover{background:#1e1e1e; color : #fff; box-shadow : inset 3px 3px 3px rgba(255, 255, 255, 0.2); border : 1px solid #1e1e1e;}
@@ -126,8 +124,8 @@
                 transform : translate(0, -40px);
             }
         }
-        .start-blur{position : absolute; top : 0; left : 0; width : 100%; height : 100%; backdrop-filter : blur(6px); background : rgba(203, 255, 249, 0.5); padding : 20px; z-index : 999; box-sizing : border-box; display : flex; align-items : center; justify-content : center; flex-direction : column;}
-        .start-blur .blur-title{font-size : 28px; font-weight : bold; letter-spacing : 1px; text-align : center; margin-bottom : 24px; text-shadow : 3px 3px rgba(255, 255, 255, 0.5);}
+        .start-blur{position : absolute; top : 0; left : 0; width : 100%; height : 100%; backdrop-filter : blur(10px); background : rgba(0, 0, 0, 0.7); padding : 20px; z-index : 999; box-sizing : border-box; display : flex; align-items : center; justify-content : center; flex-direction : column;}
+        .start-blur .blur-title{font-size : 28px; font-weight : bold; letter-spacing : 1px; text-align : center; margin-bottom : 24px; color : #fff;}
         .start-blur .button-wrap{display : flex; align-items : center; justify-content : center; gap : 0 24px;}
         .start-blur .button-wrap button{border-radius : 8px; box-sizing : border-box; box-shadow : 3px 3px 3px rgba(0, 0, 0, 0.1); font-size : 16px; display : inline-flex; align-items : center; justify-content : center; width : 96px; height : 42px;}
         .start-blur .button-wrap button:active{box-shadow : inset 3px 3px 3px rgba(0, 0, 0, 0.3); font-weight : bold;}
@@ -194,13 +192,13 @@
 
     <section id="fold03">
         <div class="wrap">
-            <div class="showcase" style="--case-position : -460px;">
-                <div class="showcase-page" data-page-number="p-0">
+            <div class="showcase">
+                <div class="showcase-page show" data-page-number="p-0">
                     <ul class="inner">
                         <li class="item">
                             <button type="button" data-price="1900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/6a06b22d195eeca9cc7e3e9a72bbdbd3.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/2eec1c3417522fee89c73e6f9ef79dc2.png?q=95&w=720" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -208,7 +206,7 @@
                         <li class="item">
                             <button type="button" data-price="1900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/2be7779d1626cf33827d20b6329b146d.png?q=95&w=" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/5f78daabc0831deaf1d5d84ad8563eb8.png?q=95&w=720" alt="">
                                 </div>
                                 <div class="label cost-1900">1,900원</div>
                             </button>
@@ -216,7 +214,7 @@
                         <li class="item">
                             <button type="button" data-price="1900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/eb5c0ace6f5c3a9032aa455e7cb533fa.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/d1f6a91a3a0e908a61e089211ac976dc.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label cost-1900">1,900원</div>
                             </button>
@@ -224,7 +222,7 @@
                         <li class="item">
                             <button type="button" data-price="1900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/6fdf1762876e986169020bf1a0de512a.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/c5a7ebe07289348764d8c57b68a1a98f.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label cost-1900">1,900원</div>
                             </button>
@@ -232,12 +230,11 @@
                         <li class="item">
                             <button type="button" data-price="1900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/a08a1797a31ed13ceef05f379c3efbce.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/871fea3810ae34351487a6b344df1ce9.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label cost-1900">1,900원</div>
                             </button>
                         </li>
-                        <!-- 참셋 끗 -->
                         <li class="item">
                             <button type="button" data-price="3700" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
@@ -246,7 +243,6 @@
                                 <div class="label"></div>
                             </button>
                         </li>
-                        <!-- 그립톡 끝 -->
                         <li class="item">
                             <button type="button" data-price="5600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
@@ -298,12 +294,12 @@
                         <!-- 빙키봉 끝 -->
                     </ul>
                 </div>
-                <div class="showcase-page show" data-page-number="p-1">
+                <div class="showcase-page" data-page-number="p-1">
                     <ul class="inner">
                         <li class="item">
                             <button type="button" data-price="1200" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/a6cd22d3ef226c448d1e920ef7ae3665.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/e6c7e12b5fe4e0c9e8a571134160a15c.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -311,7 +307,7 @@
                         <li class="item">
                             <button type="button" data-price="1200" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/0863ed77e4b46adf09480ff20c02a394.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/5adf540070edf51c9d2a0fb556bb30f0.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -319,7 +315,7 @@
                         <li class="item">
                             <button type="button" data-price="1200" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/ae76dc63efc5e5253960e1e1a4707a15.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/45352dd02dda93e0adb2bf9c7343a487.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -327,7 +323,7 @@
                         <li class="item">
                             <button type="button" data-price="1200" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/d8c98c3f060477afcd8de3f6fd25f6fb.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/553eed1f9f86966a612d21d91272e4ce.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -335,7 +331,7 @@
                         <li class="item">
                             <button type="button" data-price="1200" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/7d7d6a622b5d18ad0db49631bc5431d6.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/28c0aacc729a3ce711011ef45bac841d.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -351,23 +347,15 @@
                         <li class="item">
                             <button type="button" data-price="2100" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/f7a2d323b37319387c9a7a43796ebc92.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/c00dd1e85911cd630c270df503bf0a7b.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="3900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
-                                </div>
-                                <div class="label"></div>
-                            </button>
-                        </li>
-                        <li class="item">
-                            <button type="button" data-price="4600" onclick="itemChoiceFunction()">
-                                <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/5fc3a320eb0567d729c456c96c5a6468.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/25feb976205f6403e616a41e1eb37159.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -375,7 +363,7 @@
                         <li class="item">
                             <button type="button" data-price="4600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/1f69647a97b3ec9210f6a0f480c50a10.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/2664243fe1af101c5f3b55de49eb8c45.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -383,7 +371,7 @@
                         <li class="item">
                             <button type="button" data-price="4600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/173800c87eac6a322121f0e9fa36345f.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/d982252339b5985ace3004ac139f5677.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -391,7 +379,15 @@
                         <li class="item">
                             <button type="button" data-price="4600" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="https://cdn-contents.weverseshop.io/public/shop/b53ef2a19a98e8a54da034a6df6ca5de.png?q=95&w=320" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/5695ae13243dbd1b7b9851ccde711dc4.png?q=95&w=320" alt="">
+                                </div>
+                                <div class="label"></div>
+                            </button>
+                        </li>
+                        <li class="item">
+                            <button type="button" data-price="4600" onclick="itemChoiceFunction()">
+                                <div class="img-wrap">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/d7fd126c84a20ed8bcfd083ab8d884cb.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -401,97 +397,97 @@
                 <div class="showcase-page" data-page-number="p-2">
                     <ul class="inner">
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="1500" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/ad8f84c476ee89122b6a91c515727fcc.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="2200" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/cb76a10c1ea8960d384b2d5e618863de.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="800" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/95a3bc1fd721ab90ebcc01ca3bac8790.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="800" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/6060011551a7e9e5c668c096c692da59.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="1300" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/57ec3a30b4ce8da850de4bc7941be168.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="2900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/c405c4493868736980a759e45ef2e1a1.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="2900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/a86aa426f5435c5a2a8368b5df7b0583.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="2900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/7a46d2113e78e33a06804b30b0840be9.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="2900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/38cf02f40614b0343660e413b75a7369.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="2900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/418296f9db43374c39ca23c5afd3c548.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="2900" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/9c65a086cb204d2838804b429ffb7cda.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
                         </li>
                         <li class="item">
-                            <button type="button" data-price="aaaaaaa" onclick="itemChoiceFunction()">
+                            <button type="button" data-price="3500" onclick="itemChoiceFunction()">
                                 <div class="img-wrap">
-                                    <img src="aaaaaaa" alt="">
+                                    <img src="https://cdn-contents.weverseshop.io/public/shop/9db17e86c9f1d5e62602854a1996e596.png?q=95&w=320" alt="">
                                 </div>
                                 <div class="label"></div>
                             </button>
@@ -521,15 +517,13 @@
                     <p>1. 사랑스러운 뉴진스의 굿즈를 카트에 담습니다.</p>
                     <p>2. 정확하게 3만원 금액을 맞추면 게임 클리어! 사랑스러운 뉴깅이들 움짤을 보실 수 있어요.</p>
                     <p>3. 총 제한 시간은 2분이며 카트 내 담을 수 있는 아이템 최대 갯수는 11개 입니다.</p>
-                    <p>4. 시간이 너무 짧아요! 아이템 갯수를 늘리고 싶어요! <span class="cancle" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">소스 열어서 커스텀 하시던가</span></p>
+                    <p>4. 시간이 너무 짧아요! 아이템 갯수를 늘리고 싶어요! <span class="cancle" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">소스 열어서 커스텀 하면 됩니다.</span></p>
                 </div>
                 <div class="button-wrap">
                     <button type="button" class="start-btn" onclick="newJeansMarketStart()">게임 시작</button>
                     <button type="button" class="readme-btn" onclick="newJeansMarketReadMe()">설명 보기</button>
                 </div>
             </div>
-        </div>
-        <div class="playlist">
         </div>
     </section>
     <!-- 재귀함수 연습 -->
@@ -991,8 +985,7 @@
 
             // 스와이퍼 리셋
             let _show = document.querySelector('.showcase .show');
-            let _pos = Number(_show.getAttribute('data-page-number').replace("p-",""));
-            _pos = 0;
+            let _pos = 0;
             _show.classList.remove('shoe');
             const _firstPage = document.querySelector('.showcase-page:first-of-type');
             _firstPage.classList.add('show');
